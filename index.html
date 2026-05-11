@@ -127,7 +127,7 @@
     <button onclick="showTodaySale()">Today Sale</button>
   </div>
 
-  <div id="homeSection" style="background:#eef4ff; padding:20px; border-radius:10px; margin-bottom:20px; text-align:center;">
+  <div id="homeSection" style="display:none; background:#eef4ff; padding:20px; border-radius:10px; margin-bottom:20px; text-align:center;">
     <h2>Aditya Clinic & Diagnostic Center</h2>
     <h3>Dr. Sanjay Kumar</h3>
     <p><strong>Mobile:</strong> 7004962023</p>
@@ -188,10 +188,16 @@ document.getElementById('billDate').valueAsDate = new Date();
 
 function showHome(){
   document.getElementById('homeSection').style.display = 'block';
+  document.getElementById('billHeading').style.display = 'none';
+  document.querySelector('.info').style.display = 'none';
+  document.getElementById('medicineTable').style.display = 'none';
 }
 
 function showBill(){
   document.getElementById('homeSection').style.display = 'none';
+  document.getElementById('billHeading').style.display = 'block';
+  document.querySelector('.info').style.display = 'grid';
+  document.getElementById('medicineTable').style.display = 'table';
 }
 
 function showTodaySale(){
