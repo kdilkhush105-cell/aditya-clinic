@@ -3,34 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aditya Clinic Billing System</title>
+  <title>Dawai Billing</title>
 
   <style>
-
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:Arial, sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body{
-      background:#f2f2f2;
+      background:#f4f7fb;
       padding:20px;
     }
 
     .container{
-      max-width:1000px;
+      max-width:900px;
       margin:auto;
       background:white;
       padding:20px;
       border-radius:10px;
-      box-shadow:0 0 10px rgba(0,0,0,0.2);
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
     }
 
     h1{
       text-align:center;
-      color:#0d6efd;
+      color:#1e3a8a;
       margin-bottom:10px;
     }
 
@@ -43,15 +42,15 @@
     .info{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:15px;
+      gap:10px;
       margin-bottom:20px;
     }
 
     input{
-      width:100%;
       padding:10px;
       border:1px solid #ccc;
       border-radius:5px;
+      width:100%;
     }
 
     table{
@@ -60,67 +59,78 @@
       margin-top:20px;
     }
 
-    table th{
-      background:#0d6efd;
-      color:white;
-      padding:12px;
-    }
-
+    table th,
     table td{
-      border:1px solid #ddd;
+      border:1px solid #ccc;
       padding:10px;
       text-align:center;
     }
 
+    table th{
+      background:#2563eb;
+      color:white;
+    }
+
     button{
-      margin-top:15px;
-      padding:10px 20px;
+      padding:10px 15px;
       border:none;
       border-radius:5px;
-      background:#0d6efd;
+      background:#2563eb;
       color:white;
       cursor:pointer;
-      font-size:16px;
+      margin-top:15px;
+      margin-right:10px;
+      font-size:15px;
     }
 
     button:hover{
-      background:#084298;
+      background:#1d4ed8;
     }
 
     .total{
       margin-top:20px;
-      text-align:right;
-      font-size:28px;
-      color:green;
+      font-size:22px;
       font-weight:bold;
+      text-align:right;
+      color:#111827;
     }
 
     footer{
-      margin-top:30px;
       text-align:center;
+      margin-top:30px;
       color:#666;
     }
 
+    @media(max-width:600px){
+      .info{
+        grid-template-columns:1fr;
+      }
+
+      table{
+        font-size:12px;
+      }
+
+      button{
+        width:100%;
+      }
+    }
   </style>
 </head>
-
 <body>
 
 <div class="container">
 
-  <h1>आदित्य क्लिनिक एवं चाइल्ड हेल्थ केयर</h1>
+  <h1>आदित्य क्लिनिक एंड डायग्नोस्टिक सेंटर</h1>
   <h2>Medicine Billing System</h2>
 
   <div class="info">
     <input type="text" placeholder="Patient Name">
     <input type="date">
-
     <input type="text" placeholder="Doctor Name">
     <input type="text" placeholder="Mobile Number">
   </div>
 
   <table id="medicineTable">
-
     <thead>
       <tr>
         <th>Medicine Name</th>
@@ -131,21 +141,18 @@
     </thead>
 
     <tbody>
-
       <tr>
         <td><input type="text" placeholder="Medicine Name"></td>
         <td><input type="number" value="1" class="qty"></td>
         <td><input type="number" value="0" class="price"></td>
         <td class="rowTotal">0</td>
       </tr>
-
     </tbody>
-
   </table>
 
-  <button onclick="addRow()">+ Add Medicine</button>
-
+  <button onclick="addRow()">Add Medicine</button>
   <button onclick="calculateBill()">Calculate Total</button>
+  <button onclick="window.print()">Print Bill</button>
 
   <div class="total">
     Grand Total ₹ <span id="grandTotal">0</span>
@@ -161,9 +168,9 @@
 
 function addRow(){
 
-  let table = document.querySelector("#medicineTable tbody");
+  let table = document.querySelector('#medicineTable tbody');
 
-  let row = document.createElement("tr");
+  let row = document.createElement('tr');
 
   row.innerHTML = `
     <td><input type="text" placeholder="Medicine Name"></td>
@@ -177,8 +184,28 @@ function addRow(){
 
 function calculateBill(){
 
-  let qty = document.querySelectorAll(".qty");
-  let price = document.querySelectorAll(".price");
+  let qty = document.querySelectorAll('.qty');
+  let price = document.querySelectorAll('.price');
+  let rowTotal = document.querySelectorAll('.rowTotal');
+
+  let grandTotal = 0;
+
+  for(let i=0; i<qty.length; i++){
+
+    let total = qty[i].value * price[i].value;
+
+    rowTotal[i].innerText = total;
+
+    grandTotal += total;
+  }
+
+  document.getElementById('grandTotal').innerText = grandTotal;
+}
+
+</script>
+
+</body>
+</html>  let price = document.querySelectorAll(".price");
   let rowTotal = document.querySelectorAll(".rowTotal");
 
   let grandTotal = 0;
