@@ -46,7 +46,7 @@
       margin-bottom:20px;
     }
 
-    input{
+    input, select{
       padding:10px;
       border:1px solid #ccc;
       border-radius:5px;
@@ -121,7 +121,7 @@
 <div class="container">
 
   <h1>आदित्य क्लिनिक एंड डायग्नोस्टिक सेंटर</h1>
-  <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px; flex-wrap:wrap;">
+  <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px; flex-wrap:wrap; background:#dbeafe; padding:15px; border-radius:10px;">
     <button onclick="showHome()">Home</button>
     <button onclick="showBill()">Bill</button>
     <button onclick="showTodaySale()">Today Sale</button>
@@ -156,7 +156,26 @@
 
     <tbody>
       <tr>
-        <td><input type="text" placeholder="Medicine Name"></td>
+        <td>
+<select class="medicineSelect">
+<option value="">Select Medicine</option>
+<option>Paracetamol</option>
+<option>Azithromycin</option>
+<option>Dolo 650</option>
+<option>Cetirizine</option>
+<option>Amoxicillin</option>
+<option>Vitamin C</option>
+<option>Pantoprazole</option>
+<option>ORS</option>
+<option>Calcium Tablet</option>
+<option>Cough Syrup</option>
+<option>Ibuprofen</option>
+<option>Metformin</option>
+<option>Omeprazole</option>
+<option>Zinc Tablet</option>
+<option>Liv 52</option>
+</select>
+</td>
         <td><input type="number" value="1" class="qty"></td>
         <td><input type="number" value="0" class="price"></td>
         <td class="rowTotal">0</td>
@@ -191,6 +210,8 @@ function showHome(){
   document.getElementById('billHeading').style.display = 'none';
   document.querySelector('.info').style.display = 'none';
   document.getElementById('medicineTable').style.display = 'none';
+  document.querySelectorAll('button[onclick="addRow()"], button[onclick="calculateBill()"], button[onclick="window.print()"]')
+    .forEach(btn => btn.style.display = 'none');
 }
 
 function showBill(){
@@ -198,6 +219,8 @@ function showBill(){
   document.getElementById('billHeading').style.display = 'block';
   document.querySelector('.info').style.display = 'grid';
   document.getElementById('medicineTable').style.display = 'table';
+  document.querySelectorAll('button[onclick="addRow()"], button[onclick="calculateBill()"], button[onclick="window.print()"]')
+    .forEach(btn => btn.style.display = 'inline-block');
 }
 
 function showTodaySale(){
@@ -211,7 +234,26 @@ function addRow(){
   let row = document.createElement('tr');
 
   row.innerHTML = `
-    <td><input type="text" placeholder="Medicine Name"></td>
+    <td>
+<select class="medicineSelect">
+<option value="">Select Medicine</option>
+<option>Paracetamol</option>
+<option>Azithromycin</option>
+<option>Dolo 650</option>
+<option>Cetirizine</option>
+<option>Amoxicillin</option>
+<option>Vitamin C</option>
+<option>Pantoprazole</option>
+<option>ORS</option>
+<option>Calcium Tablet</option>
+<option>Cough Syrup</option>
+<option>Ibuprofen</option>
+<option>Metformin</option>
+<option>Omeprazole</option>
+<option>Zinc Tablet</option>
+<option>Liv 52</option>
+</select>
+</td>
     <td><input type="number" value="1" class="qty"></td>
     <td><input type="number" value="0" class="price"></td>
     <td class="rowTotal">0</td>
