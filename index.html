@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Clinic Billing System</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f2f2f2;
+      padding:20px;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      text-align:center;
+      color:#0d6efd;
+      margin-bottom:10px;
+    }
+
+    h2{
+      text-align:center;
+      margin-bottom:20px;
+      color:#444;
+    }
+
+    .info{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+      margin-bottom:20px;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+
+    table th{
+      background:#0d6efd;
+      color:white;
+      padding:12px;
+    }
+
+    table td{
+      border:1px solid #ddd;
+      padding:10px;
+      text-align:center;
+    }
+
+    button{
+      margin-top:15px;
+      padding:10px 20px;
+      border:none;
+      border-radius:5px;
+      background:#0d6efd;
+      color:white;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    button:hover{
+      background:#084298;
+    }
+
+    .total{
+      margin-top:20px;
+      text-align:right;
+      font-size:28px;
+      color:green;
+      font-weight:bold;
+    }
+
+    footer{
+      margin-top:30px;
+      text-align:center;
+      color:#666;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>आदित्य क्लिनिक एवं चाइल्ड हेल्थ केयर</h1>
+  <h2>Medicine Billing System</h2>
+
+  <div class="info">
+    <input type="text" placeholder="Patient Name">
+    <input type="date">
+
+    <input type="text" placeholder="Doctor Name">
+    <input type="text" placeholder="Mobile Number">
+  </div>
+
+  <table id="medicineTable">
+
+    <thead>
+      <tr>
+        <th>Medicine Name</th>
+        <th>Quantity</th>
+        <th>Price ₹</th>
+        <th>Total ₹</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td><input type="text" placeholder="Medicine Name"></td>
+        <td><input type="number" value="1" class="qty"></td>
+        <td><input type="number" value="0" class="price"></td>
+        <td class="rowTotal">0</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <button onclick="addRow()">+ Add Medicine</button>
+
+  <button onclick="calculateBill()">Calculate Total</button>
+
+  <div class="total">
+    Grand Total ₹ <span id="grandTotal">0</span>
+  </div>
+
+  <footer>
+    © 2026 Aditya Clinic Billing Software
+  </footer>
+
+</div>
+
+<script>
+
+function addRow(){
+
+  let table = document.querySelector("#medicineTable tbody");
+
+  let row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td><input type="text" placeholder="Medicine Name"></td>
+    <td><input type="number" value="1" class="qty"></td>
+    <td><input type="number" value="0" class="price"></td>
+    <td class="rowTotal">0</td>
+  `;
+
+  table.appendChild(row);
+}
+
+function calculateBill(){
+
+  let qty = document.querySelectorAll(".qty");
+  let price = document.querySelectorAll(".price");
+  let rowTotal = document.querySelectorAll(".rowTotal");
+
+  let grandTotal = 0;
+
+  for(let i=0; i<qty.length; i++){
+
+    let total = qty[i].value * price[i].value;
+
+    rowTotal[i].innerText = total;
+
+    grandTotal += total;
+  }
+
+  document.getElementById("grandTotal").innerText = grandTotal;
+}
+
+</script>
+
+</body>
+</html>
