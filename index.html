@@ -157,24 +157,35 @@
     <tbody>
       <tr>
         <td>
-<select class="medicineSelect">
-<option value="">Select Medicine</option>
-<option>Paracetamol</option>
-<option>Azithromycin</option>
-<option>Dolo 650</option>
-<option>Cetirizine</option>
-<option>Amoxicillin</option>
-<option>Vitamin C</option>
-<option>Pantoprazole</option>
-<option>ORS</option>
-<option>Calcium Tablet</option>
-<option>Cough Syrup</option>
-<option>Ibuprofen</option>
-<option>Metformin</option>
-<option>Omeprazole</option>
-<option>Zinc Tablet</option>
-<option>Liv 52</option>
-</select>
+<input list="medicineList" class="medicineSelect" placeholder="Search Medicine">
+
+<datalist id="medicineList">
+<option value="Paracetamol Tablet">
+<option value="Dolo 650 Tablet">
+<option value="Azithromycin Tablet">
+<option value="Cetirizine Tablet">
+<option value="Amoxicillin Capsule">
+<option value="Pantoprazole Tablet">
+<option value="Vitamin C Tablet">
+<option value="Calcium Tablet">
+<option value="Ibuprofen Tablet">
+<option value="Metformin Tablet">
+<option value="Omeprazole Capsule">
+<option value="Zinc Tablet">
+<option value="Liv 52 Syrup">
+<option value="Cough Syrup">
+<option value="ORS Powder">
+<option value="RL Injection">
+<option value="DNS Injection">
+<option value="NS Injection">
+<option value="PCM Syrup">
+<option value="B Complex Syrup">
+<option value="Iron Syrup">
+<option value="Protein Powder">
+<option value="Insulin Injection">
+<option value="Diclofenac Injection">
+<option value="Vitamin B12 Injection">
+</datalist>
 </td>
         <td><input type="number" value="1" class="qty"></td>
         <td><input type="number" value="0" class="price"></td>
@@ -235,24 +246,35 @@ function addRow(){
 
   row.innerHTML = `
     <td>
-<select class="medicineSelect">
-<option value="">Select Medicine</option>
-<option>Paracetamol</option>
-<option>Azithromycin</option>
-<option>Dolo 650</option>
-<option>Cetirizine</option>
-<option>Amoxicillin</option>
-<option>Vitamin C</option>
-<option>Pantoprazole</option>
-<option>ORS</option>
-<option>Calcium Tablet</option>
-<option>Cough Syrup</option>
-<option>Ibuprofen</option>
-<option>Metformin</option>
-<option>Omeprazole</option>
-<option>Zinc Tablet</option>
-<option>Liv 52</option>
-</select>
+<input list="medicineList" class="medicineSelect" placeholder="Search Medicine">
+
+<datalist id="medicineList">
+<option value="Paracetamol Tablet">
+<option value="Dolo 650 Tablet">
+<option value="Azithromycin Tablet">
+<option value="Cetirizine Tablet">
+<option value="Amoxicillin Capsule">
+<option value="Pantoprazole Tablet">
+<option value="Vitamin C Tablet">
+<option value="Calcium Tablet">
+<option value="Ibuprofen Tablet">
+<option value="Metformin Tablet">
+<option value="Omeprazole Capsule">
+<option value="Zinc Tablet">
+<option value="Liv 52 Syrup">
+<option value="Cough Syrup">
+<option value="ORS Powder">
+<option value="RL Injection">
+<option value="DNS Injection">
+<option value="NS Injection">
+<option value="PCM Syrup">
+<option value="B Complex Syrup">
+<option value="Iron Syrup">
+<option value="Protein Powder">
+<option value="Insulin Injection">
+<option value="Diclofenac Injection">
+<option value="Vitamin B12 Injection">
+</datalist>
 </td>
     <td><input type="number" value="1" class="qty"></td>
     <td><input type="number" value="0" class="price"></td>
