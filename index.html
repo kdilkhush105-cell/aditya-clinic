@@ -106,114 +106,6 @@
         grid-template-columns:1fr;
       }
 
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dawai Billing</title>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body{
-      background:#f4f7fb;
-      padding:20px;
-    }
-
-    .container{
-      max-width:900px;
-      margin:auto;
-      background:white;
-      padding:20px;
-      border-radius:10px;
-      box-shadow:0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h1{
-      text-align:center;
-      color:#1e3a8a;
-      margin-bottom:10px;
-    }
-
-    h2{
-      text-align:center;
-      margin-bottom:20px;
-      color:#444;
-    }
-
-    .info{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-bottom:20px;
-    }
-
-    input{
-      padding:10px;
-      border:1px solid #ccc;
-      border-radius:5px;
-      width:100%;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:20px;
-    }
-
-    table th,
-    table td{
-      border:1px solid #ccc;
-      padding:10px;
-      text-align:center;
-    }
-
-    table th{
-      background:#2563eb;
-      color:white;
-    }
-
-    button{
-      padding:10px 15px;
-      border:none;
-      border-radius:5px;
-      background:#2563eb;
-      color:white;
-      cursor:pointer;
-      margin-top:15px;
-      margin-right:10px;
-      font-size:15px;
-    }
-
-    button:hover{
-      background:#1d4ed8;
-    }
-
-    .total{
-      margin-top:20px;
-      font-size:22px;
-      font-weight:bold;
-      text-align:right;
-      color:#111827;
-    }
-
-    footer{
-      text-align:center;
-      margin-top:30px;
-      color:#666;
-    }
-
-    @media(max-width:600px){
-      .info{
-        grid-template-columns:1fr;
-      }
-
       table{
         font-size:12px;
       }
@@ -230,12 +122,20 @@
 
   <h1>आदित्य क्लिनिक एंड डायग्नोस्टिक सेंटर</h1>
   <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px; flex-wrap:wrap;">
-    <button>Home</button>
-    <button>Bill</button>
-    <button>Today Sale</button>
+    <button onclick="showHome()">Home</button>
+    <button onclick="showBill()">Bill</button>
+    <button onclick="showTodaySale()">Today Sale</button>
   </div>
 
-  <h2>Medicine Billing System</h2>
+  <div id="homeSection" style="background:#eef4ff; padding:20px; border-radius:10px; margin-bottom:20px; text-align:center;">
+    <h2>Aditya Clinic & Diagnostic Center</h2>
+    <h3>Dr. Sanjay Kumar</h3>
+    <p><strong>Mobile:</strong> 7004962023</p>
+    <p><strong>Alternate:</strong> 9693046180</p>
+    <p><strong>Address:</strong> Rachiyahi Naya Tola</p>
+  </div>
+
+  <h2 id="billHeading">Medicine Billing System</h2>
 
   <div class="info">
     <input type="text" placeholder="Patient Name">
@@ -286,6 +186,18 @@
 
 document.getElementById('billDate').valueAsDate = new Date();
 
+function showHome(){
+  document.getElementById('homeSection').style.display = 'block';
+}
+
+function showBill(){
+  document.getElementById('homeSection').style.display = 'none';
+}
+
+function showTodaySale(){
+  alert('Today Total Billing ₹ ' + (localStorage.getItem('todayBilling') || 0));
+}
+
 function addRow(){
 
   let table = document.querySelector('#medicineTable tbody');
@@ -330,32 +242,6 @@ function calculateBill(){
 }
 
 document.getElementById('todayBilling').innerText = localStorage.getItem('todayBilling') || 0;
-
-</script>
-
-</body>
-</html>  document.getElementById('grandTotal').innerText = grandTotal;
-}
-
-</script>
-
-</body>
-</html>  let price = document.querySelectorAll(".price");
-  let rowTotal = document.querySelectorAll(".rowTotal");
-
-  let grandTotal = 0;
-
-  for(let i=0; i<qty.length; i++){
-
-    let total = qty[i].value * price[i].value;
-
-    rowTotal[i].innerText = total;
-
-    grandTotal += total;
-  }
-
-  document.getElementById("grandTotal").innerText = grandTotal;
-}
 
 </script>
 
